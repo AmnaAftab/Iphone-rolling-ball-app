@@ -1,0 +1,82 @@
+//
+//  ViewController.m
+//  Fun ball game
+//
+//  Created by Amna Aftab on 6/2/13.
+//  Copyright (c) 2013 Amna Aftab. All rights reserved.
+//
+
+#import "ViewController.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    pos = CGPointMake(5.0, 4.0); // (Xspeed, Y speed)
+}
+
+-(IBAction)start {
+    [startButton setHidden:YES];
+    randomMain = [NSTimer scheduledTimerWithTimeInterval:(0.01) target:self selector:@selector(onTimer)userInfo:nil repeats:YES];
+}
+
+-(void) onTimer{ //ontimer method callin from IBAction method
+    
+    [self checkCollision]; // check collision method 
+    attacker.center = CGPointMake(attacker.center.x+pos.x, attacker.center.y+pos.y);
+
+    if (attacker.center.x>320|| attacker.center.x <0) //if bounces of the sides of screen
+        pos.x = -pos.x;
+    if (attacker.center.y >480|| attacker.center.y <0)
+    pos.y = -pos.y;
+    
+    
+    
+}
+-(void)checkCollision { // if player and attracter ball collides
+    if (CGRectIntersectsRect(player.frame, attacker.frame))
+        
+    {
+        [randomMain invalidate]; // randommain is the timer and invalides stops the timer
+        //[startButton setHidden:NO];
+        
+       // pos = CGPointMake(0.0, 0.0);
+        
+        CGRect frame1 = [player frame];
+        frame1.origin.x = 137.0f;
+        frame1.origin.y = 326.0;
+        [player setFrame:frame1];
+        
+        CGRect frame2 = [attacker frame]; //frame is an instant variable for CGRect
+        frame2.origin.x = 137.0f;
+        frame2.origin.y = 20.0;
+        [attacker setFrame:frame2];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lost!" message:[NSString stringWithFormat:@"You were hit! Try again"] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        
+        [alert show];
+        
+    }
+}
+-(void)touchesMoved:(NSSet *)touches withEvent:
+(UIEvent *)event { //detects the finger on the screen
+    //we are able to move on the screen
+    
+    UITouch *myTouch = [[event allTouches]anyObject]; //basically drags the object wherever the finger is
+    player.center = [myTouch locationInView:self.view];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+@end

@@ -23,7 +23,8 @@
 
 -(IBAction)start {
     [startButton setHidden:YES];
-    randomMain = [NSTimer scheduledTimerWithTimeInterval:(0.01) target:self selector:@selector(onTimer)userInfo:nil repeats:YES];
+    randomMain = [NSTimer scheduledTimerWithTimeInterval:(0.01) target:self selector:@selector
+    (onTimer)userInfo:nil repeats:YES];
 }
 
 -(void) onTimer{ //ontimer method callin from IBAction method

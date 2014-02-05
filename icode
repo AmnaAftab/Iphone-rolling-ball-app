@@ -59,7 +59,8 @@
         frame2.origin.y = 20.0;
         [attacker setFrame:frame2];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lost!" message:[NSString stringWithFormat:@"You were hit! Try again"] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Lost!" message:[NSString 
+        stringWithFormat:@"You were hit! Try again"] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
         
         [alert show];
         

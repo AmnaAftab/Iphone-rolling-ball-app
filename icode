@@ -70,7 +70,7 @@
 (UIEvent *)event { //detects the finger on the screen
     //we are able to move on the screen
     
-    UITouch *myTouch = [[event allTouches]anyObject]; //basically drags the object wherever the finger is
+    UITouch *myTouch = [[event allTouches]anyObject]; //drags the object wherever the finger is
     player.center = [myTouch locationInView:self.view];
 }
 

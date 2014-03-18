@@ -95,7 +95,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    pos = CGPointMake(5.0, 4.0); // (Xspeed, Y speed)
+    pos = CGPointMake(8.0, 4.0); // (Xspeed, Y speed)
 }
 
 -(IBAction)start {
@@ -127,12 +127,12 @@
        // pos = CGPointMake(0.0, 0.0);
         
         CGRect frame1 = [player frame];
-        frame1.origin.x = 137.0f;
+        frame1.origin.x = 137.0f; // player ball pixels
         frame1.origin.y = 326.0;
         [player setFrame:frame1];
         
         CGRect frame2 = [attacker frame]; //frame is an instant variable for CGRect
-        frame2.origin.x = 137.0f;
+        frame2.origin.x = 137.0f; // opposition ball pixels
         frame2.origin.y = 20.0;
         [attacker setFrame:frame2];
         
